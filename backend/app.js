@@ -8,7 +8,10 @@ require('dotenv').config();
 const { testConnection } = require('./config/database');
 const authRoutes = require('./routes/authRoutes');
 
+
 const app = express();
+const adminRoutes = require('./routes/adminRoutes');
+app.use('/api/admin', adminRoutes);
 
 // Security middleware
 app.use(helmet());

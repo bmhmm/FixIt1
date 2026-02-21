@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 class User {
     // Create new user
     static async create(userData) {
-        const { full_name, email, password, user_type = 'customer' } = userData;
+        const { full_name, email, password, user_type} = userData;
         
         // Hash password
         const hashedPassword = await bcrypt.hash(password, 10);

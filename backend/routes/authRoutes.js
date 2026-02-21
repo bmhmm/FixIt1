@@ -22,7 +22,8 @@ const registerValidation = [
         .isLength({ min: 8 }).withMessage('Password must be at least 8 characters'),
     
     body('confirmPassword')
-        .notEmpty().withMessage('Please confirm your password')
+        .notEmpty().withMessage('Please confirm your password'),
+    body('role').isIn(['customer', 'provider']).withMessage('Role must be customer or provider')
 ];
 
 const loginValidation = [

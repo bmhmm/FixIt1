@@ -97,9 +97,30 @@ const optionalAuth = async (req, res, next) => {
     next();
 };
 
+const authorize = (...roles) => {
+    return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({
+                success: false,
+                errors: ['Unauthorized']
+            });
+        }
+        
+        if (!roles.includes(req.user.user_type)) {
+            return res.status(403).json({
+                success: false,
+                errors: ['Access denied. Insufficient permissions.']
+            });
+        }
+        
+        next();
+    };
+};
+
 module.exports = {
     protect,
     provider,
     adminOrProvider,
-    optionalAuth
+    optionalAuth,
+    authorize  // Add this line!
 };

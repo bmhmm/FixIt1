@@ -23,7 +23,7 @@ const register = async (req, res) => {
             });
         }
 
-        const { full_name, email, password, confirmPassword } = req.body;
+        const { full_name, email, password, confirmPassword, role } = req.body;
 
         // Check if passwords match
         if (password !== confirmPassword) {
@@ -56,7 +56,7 @@ const register = async (req, res) => {
             full_name,
             email,
             password,
-            user_type: 'customer' // Default to customer
+            user_type: role // Default to customer
         });
 
         // Get created user details
