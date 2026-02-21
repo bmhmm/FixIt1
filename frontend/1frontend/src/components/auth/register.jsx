@@ -3,13 +3,15 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Register.css';
 
+
 const Register = () => {
     const navigate = useNavigate();
     const [formData, setFormData] = useState({
         full_name: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        role: ''
     });
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
@@ -87,6 +89,7 @@ const Register = () => {
             newErrors.full_name = 'Full name must be at least 2 characters';
         } else if (!/^[a-zA-Z\s]+$/.test(formData.full_name)) {
             newErrors.full_name = 'Full name can only contain letters and spaces';
+
         }
 
         // Email validation
@@ -118,6 +121,11 @@ const Register = () => {
             newErrors.confirmPassword = 'Please confirm your password';
         } else if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = 'Passwords do not match';
+        }
+
+        // Role validation
+        if (!formData.role) {
+            newErrors.role = 'Please select your role';
         }
 
         return newErrors;
@@ -192,7 +200,9 @@ const Register = () => {
         <div className="register-container">
             <div className="register-wrapper">
                 {/* Left side - Branding */}
-                <div className="brand-section">
+                <div className="brand-section" style={{
+                    background: 'linear-gradient(135deg, #6e8efb 0%, #a777e3 100%)'
+                }}>
                     <div className="brand-content">
                         <h1 className="brand-title">
                             <span className="brand-icon">🔧</span> FixIt
@@ -221,6 +231,49 @@ const Register = () => {
                         </div>
                     </div>
                 </div>
+
+
+                {/*adding role selection here*/}
+                {/* Before the form fields, add role selection */}
+                <div className="role-selection">
+                    <label className="role-label">
+                        <span className="label-icon">👥</span>
+                        I want to:
+                    </label>
+                    <div className="role-options">
+                        <div
+                            className={`role-card ${formData.role === 'customer' ? 'active' : ''}`}
+                            onClick={() => setFormData({ ...formData, role: 'customer' })}
+                        >
+                            <div className="role-icon">🔍</div>
+                            <div className="role-info">
+                                <h4>Find Services</h4>
+                                <p>Hire trusted professionals</p>
+                            </div>
+                            <div className="role-check">
+                                {formData.role === 'customer' && <span className="check-mark">✓</span>}
+                            </div>
+                        </div>
+
+                        <div
+                            className={`role-card ${formData.role === 'provider' ? 'active' : ''}`}
+                            onClick={() => setFormData({ ...formData, role: 'provider' })}
+                        >
+                            <div className="role-icon">🛠️</div>
+                            <div className="role-info">
+                                <h4>Offer Services</h4>
+                                <p>Work as a professional</p>
+                            </div>
+                            <div className="role-check">
+                                {formData.role === 'provider' && <span className="check-mark">✓</span>}
+                            </div>
+                        </div>
+                    </div>
+                    {errors.role && <span className="error-message">{errors.role}</span>}
+                </div>
+                {/*ending of form selection*/}
+
+
 
                 {/* Right side - Registration Form */}
                 <div className="form-section">
@@ -351,6 +404,11 @@ const Register = () => {
                             <button
                                 type="submit"
                                 className="submit-btn"
+                                style={{
+                                    background: 'linear-gradient(135deg, #6e8efb 0%, #a777e3 100%)',
+                                    marginTop: '20px',
+                                    fontSize: '16px'
+                                }}
                                 disabled={isLoading}
                             >
                                 {isLoading ? (
@@ -389,3 +447,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
