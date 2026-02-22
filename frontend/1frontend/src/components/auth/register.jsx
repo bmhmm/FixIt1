@@ -278,8 +278,9 @@ const Register = () => {
                 {/* Right side - Registration Form */}
                 <div className="form-section">
                     <div className="form-wrapper">
-                        <h2 className="form-title">Create Account</h2>
-                        <p className="form-subtitle">Join FixIt today and get things done</p>
+                        <h2 className="form-title" style={{marginBottom:"0px"}}>Create Account</h2>
+                        {/* starting div*/}
+                        <p className="form-subtitle" style={{marginBottom: "5px"}}>Join FixIt today and get things done</p>
 
                         {apiErrors.length > 0 && (
                             <div className="error-alert">
@@ -400,29 +401,46 @@ const Register = () => {
                                     <span className="error-message">{errors.confirmPassword}</span>
                                 )}
                             </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    className="submit-btn"
+                                    style={{
+                                        background: 'linear-gradient(135deg, #6e8efb 0%, #a777e3 100%)',
+                                        marginTop: '20px',
+                                        fontSize: '16px'
+                                    }}
+                                    disabled={isLoading}
+                                >
+                                    {isLoading ? (
+                                        <>
+                                            <span className="spinner"></span>
+                                            Creating Account...
+                                        </>
+                                    ) : (
+                                        'Create Account'
+                                    )}
+                                </button>
 
-                            <button
-                                type="submit"
-                                className="submit-btn"
-                                style={{
-                                    background: 'linear-gradient(135deg, #6e8efb 0%, #a777e3 100%)',
-                                    marginTop: '20px',
-                                    fontSize: '16px'
-                                }}
-                                disabled={isLoading}
-                            >
-                                {isLoading ? (
-                                    <>
-                                        <span className="spinner"></span>
-                                        Creating Account...
-                                    </>
-                                ) : (
-                                    'Create Account'
-                                )}
-                            </button>
-
-                            <div className="form-footer">
+                                <div className="form-footer">
+                                    <p style={{ marginTop: '5px' }}>
+                                        Already have an account?{' '}
+                                        <Link to="/login" className="login-link">
+                                            Sign In
+                                        </Link>
+                                    </p>                            
+                                </div>
+                                <div className="terms">
                                 <p>
+                                    By signing up, you agree to our{' '}
+                                    <a href="/terms" target="_blank">Terms of Service</a>{' '}
+                                    and{' '}
+                                    <a href="/privacy" target="_blank">Privacy Policy</a>
+                                </p>
+                            </div>
+                            </div>
+                            {/* <div className="form-footer">
+                                <p style={{ marginTop: '5px' }}>
                                     Already have an account?{' '}
                                     <Link to="/login" className="login-link">
                                         Sign In
@@ -437,8 +455,9 @@ const Register = () => {
                                     and{' '}
                                     <a href="/privacy" target="_blank">Privacy Policy</a>
                                 </p>
-                            </div>
+                            </div> */}
                         </form>
+                    
                     </div>
                 </div>
             </div>
