@@ -13,6 +13,9 @@ const app = express();
 const adminRoutes = require('./routes/adminRoutes');
 app.use('/api/admin', adminRoutes);
 
+const providerRoutes = require('./routes/providerRoutes');
+app.use('/api/provider', providerRoutes);
+
 // Security middleware
 app.use(helmet());
 app.use(cors({
