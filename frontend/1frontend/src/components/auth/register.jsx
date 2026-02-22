@@ -153,10 +153,10 @@ const Register = () => {
                 localStorage.setItem('user', JSON.stringify(response.data.data));
 
                 // Show success message
-                alert('Registration successful! Redirecting to dashboard...');
+                alert('Registration successful! Please login to continue');
 
                 // Redirect to dashboard or home
-                navigate('/dashboard');
+                navigate('/login');
             }
         } catch (error) {
             if (error.response && error.response.data) {
@@ -278,9 +278,9 @@ const Register = () => {
                 {/* Right side - Registration Form */}
                 <div className="form-section">
                     <div className="form-wrapper">
-                        <h2 className="form-title" style={{marginBottom:"0px"}}>Create Account</h2>
+                        <h2 className="form-title" style={{ marginBottom: "0px" }}>Create Account</h2>
                         {/* starting div*/}
-                        <p className="form-subtitle" style={{marginBottom: "5px"}}>Join FixIt today and get things done</p>
+                        <p className="form-subtitle" style={{ marginBottom: "5px" }}>Join FixIt today and get things done</p>
 
                         {apiErrors.length > 0 && (
                             <div className="error-alert">
@@ -428,16 +428,16 @@ const Register = () => {
                                         <Link to="/login" className="login-link">
                                             Sign In
                                         </Link>
-                                    </p>                            
+                                    </p>
                                 </div>
                                 <div className="terms">
-                                <p>
-                                    By signing up, you agree to our{' '}
-                                    <a href="/terms" target="_blank">Terms of Service</a>{' '}
-                                    and{' '}
-                                    <a href="/privacy" target="_blank">Privacy Policy</a>
-                                </p>
-                            </div>
+                                    <p>
+                                        By signing up, you agree to our{' '}
+                                        <a href="/terms" target="_blank">Terms of Service</a>{' '}
+                                        and{' '}
+                                        <a href="/privacy" target="_blank">Privacy Policy</a>
+                                    </p>
+                                </div>
                             </div>
                             {/* <div className="form-footer">
                                 <p style={{ marginTop: '5px' }}>
@@ -457,7 +457,7 @@ const Register = () => {
                                 </p>
                             </div> */}
                         </form>
-                    
+
                     </div>
                 </div>
             </div>
