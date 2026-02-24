@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import CustomerSidebar from '../layout/CustomerSidebar';
-import CustomerHeader from '../layout/CustomerHeader';
+import CustomerSidebar from './customerSidebar';
+import CustomerHeader from '../layout/customerHeader';
 import SearchServices from './SearchServices';
 import ProviderList from './ProviderList';
 import ProviderProfileView from './ProviderProfileView';
