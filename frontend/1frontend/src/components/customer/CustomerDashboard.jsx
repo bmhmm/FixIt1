@@ -4,11 +4,13 @@ import axios from 'axios';
 import CustomerSidebar from './customerSidebar';
 import CustomerHeader from '../layout/customerHeader';
 import SearchServices from './SearchServices';
-import ProviderList from './ProviderList';
-import ProviderProfileView from './ProviderProfileView';
+import ProviderList from '../provider/ProviderLists';
+import ProviderProfileView from '../provider/providerProfileView';
 import BookingForm from './BookingForm';
-import MyBookings from './MyBookings';
+import MyBookings from './myBooking';
 import './CustomerDashboard.css';
+import Favorites from './favorites';
+import Settings from './settings';
 
 const CustomerDashboard = () => {
     const navigate = useNavigate();
@@ -74,6 +76,8 @@ const CustomerDashboard = () => {
                     {activeTab === 'profile-view' && <ProviderProfileView />}
                     {activeTab === 'book' && <BookingForm />}
                     {activeTab === 'my-bookings' && <MyBookings />}
+                    {activeTab === 'favorites' && <Favorites />}
+                    {activeTab === 'settings' && <Settings />}
 
                     {activeTab === 'overview' && (
                         <div className="overview-grid">
@@ -122,10 +126,10 @@ const CustomerDashboard = () => {
                                     <button className="action-btn" onClick={() => setActiveTab('my-bookings')}>
                                         <span>📅</span> My Bookings
                                     </button>
-                                    <button className="action-btn">
+                                    <button className="action-btn" onclick={() => setActiveTab('favorites')}>
                                         <span>❤️</span> Favorites
                                     </button>
-                                    <button className="action-btn">
+                                    <button className="action-btn" onClick={() => setActiveTab('settings')}>
                                         <span>⚙️</span> Settings
                                     </button>
                                 </div>

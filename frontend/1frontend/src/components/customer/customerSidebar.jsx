@@ -9,6 +9,7 @@ const CustomerSidebar = ({ activeTab, setActiveTab }) => {
         { id: 'my-bookings', label: 'My Bookings', icon: '📋' },
         { id: 'favorites', label: 'Favorites', icon: '❤️' },
         { id: 'settings', label: 'Settings', icon: '⚙️' },
+
     ];
 
     return (
