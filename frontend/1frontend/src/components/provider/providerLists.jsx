@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ProviderList.css';
+import './ProviderLists.css';
 
 const ProviderList = () => {
     const navigate = useNavigate();
@@ -14,6 +14,8 @@ const ProviderList = () => {
         // fetchProviders();
         setLoading(false);
     }, []);
+
+
 
     // const fetchProviders = async () => {
     //     try {

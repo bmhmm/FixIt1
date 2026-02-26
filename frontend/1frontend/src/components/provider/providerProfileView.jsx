@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import './ProviderProfileView.css';
+import './providerProfileView.css';
 
 const ProviderProfileView = () => {
     const { id } = useParams();

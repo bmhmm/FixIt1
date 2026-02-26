@@ -25,8 +25,8 @@ const ProviderHeader = ({ providerData }) => {
 
             <div className="header-right">
                 <div className="header-search">
-                    <span className="search-icon">🔍</span>
-                    <input type="text" placeholder="Search bookings..." />
+                    <span className="search-icon" style={{ marginRight: "10px" }}>🔍</span>
+                    <input type="text" placeholder="Search bookings..." style={{ marginLeft: "20px" }} />
                 </div>
 
                 <div className="header-notifications">

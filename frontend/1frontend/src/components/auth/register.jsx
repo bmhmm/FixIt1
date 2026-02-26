@@ -407,7 +407,8 @@ const Register = () => {
                                     className="submit-btn"
                                     style={{
                                         background: 'linear-gradient(135deg, #6e8efb 0%, #a777e3 100%)',
-                                        marginTop: '20px',
+                                        marginTop: '0px',
+                                        marginBottom: '37px',
                                         fontSize: '16px'
                                     }}
                                     disabled={isLoading}

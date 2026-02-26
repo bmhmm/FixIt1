@@ -134,14 +134,14 @@ const Login = () => {
 
                 switch (userType) {
                     case 'admin':
-                        navigate('/admin/dashboard');
+                        navigate('/api/admin/dashboard');
                         break;
                     case 'provider':
-                        navigate('/provider/dashboard');
+                        navigate('/api/provider/dashboard');
                         break;
                     case 'customer':
                     default:
-                        navigate('/customer/dashboard');
+                        navigate('/api/customer/dashboard');
                         break;
                 }
             }

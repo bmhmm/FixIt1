@@ -8,11 +8,37 @@ import TodaysJobs from './todaysJobs';
 import Earnings from './earnings';
 import './ProviderDashboard.css';
 
+
+
 const ProviderDashboard = () => {
     const navigate = useNavigate();
     const [activeTab, setActiveTab] = useState('overview');
     const [providerData, setProviderData] = useState(null);
     const [loading, setLoading] = useState(true);
+
+
+    const [dashboardStats, setDashboardStats] = useState({
+        todayJobs: 0,
+        pendingRequests: 0,
+        monthEarnings: 0,
+        rating: '0.0'
+    });
+
+    useEffect(() => {
+        fetchDashboardStats();
+    }, []);
+
+    const fetchDashboardStats = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:5000/api/provider/dashboard', {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            setDashboardStats(response.data.data);
+        } catch (error) {
+            console.error('Error fetching stats:', error);
+        }
+    };
 
     useEffect(() => {
         // Check if user is logged in and is provider
@@ -31,7 +57,7 @@ const ProviderDashboard = () => {
     const fetchDashboardData = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/api/provider/dashboard', {
+            const response = await axios.get('http://localhost:5173/api/provider/dashboard', {
                 headers: { Authorization: `Bearer ${token}` }
             });
             // Handle dashboard data
@@ -147,6 +173,8 @@ const ProviderDashboard = () => {
                     {activeTab === 'jobs' && <TodaysJobs />}
                     {activeTab === 'earnings' && <Earnings />}
                     {activeTab === 'profile' && <ProviderProfile />}
+                    {activeTab === 'portfolio' && <ProviderPortfolio />}
+                    {activeTab === 'settings' && <ProviderSettings />}
                 </div>
             </div>
         </div>
@@ -260,6 +288,33 @@ const ProviderProfile = () => {
                         <span className="empty-tag">No services added</span>
                     </div>
                 </div>
+            </div>
+        </div>
+    );
+};
+
+const ProviderPortfolio = () => {
+    return (
+        <div className="portfolio-section">
+            <h2>My Portfolio</h2>
+            <div className="empty-state">
+                <span className="empty-icon">🖼️</span>
+                <h3>No portfolio items yet</h3>
+                <p>Add photos of your work to showcase your skills</p>
+                <button className="add-portfolio-btn">+ Add Photos</button>
+            </div>
+        </div>
+    );
+};
+
+const ProviderSettings = () => {
+    return (
+        <div className="settings-section">
+            <h2>Settings</h2>
+            <div className="empty-state">
+                <span className="empty-icon">⚙️</span>
+                <h3>Settings coming soon</h3>
+                <p>You'll be able to manage your account settings here</p>
             </div>
         </div>
     );
