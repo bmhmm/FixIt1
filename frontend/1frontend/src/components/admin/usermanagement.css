@@ -1,0 +1,119 @@
+.user-management {
+    padding: 20px 0;
+}
+
+.management-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.management-header h2 {
+    color: #1e293b;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.header-actions input,
+.header-actions select {
+    padding: 10px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.header-actions input:focus,
+.header-actions select:focus {
+    outline: none;
+    border-color: #7c3aed;
+}
+
+.users-table {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 15px 10px;
+    color: #64748b;
+    font-weight: 500;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    background: #f1f5f9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.user-type {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.user-type.customer { background: #3b82f620; color: #3b82f6; }
+.user-type.provider { background: #10b98120; color: #10b981; }
+.user-type.admin { background: #7c3aed20; color: #7c3aed; }
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.status-badge.active { background: #10b98120; color: #10b981; }
+.status-badge.suspended { background: #ef444420; color: #ef4444; }
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.action-buttons button {
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.view-btn { background: #f1f5f9; color: #64748b; }
+.suspend-btn { background: #fee2e2; color: #ef4444; }
+.activate-btn { background: #10b98120; color: #10b981; }
+
+.view-btn:hover { background: #e2e8f0; }
+.suspend-btn:hover { background: #ef4444; color: white; }
+.activate-btn:hover { background: #10b981; color: white; }
