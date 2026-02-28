@@ -21,7 +21,7 @@ router.use(protect);
 router.get('/dashboard', getDashboard);
 
 // Providers
-router.get('/providers', getProviders);
+router.get('/provider', getProviders);
 router.get('/provider/:id', getProviderById);
 
 // Bookings

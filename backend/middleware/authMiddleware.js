@@ -4,8 +4,7 @@ const User = require('./../models/user');
 // Protect routes - verify JWT token
 const protect = async (req, res, next) => {
     let token;
-
-    // Check for token in headers
+         // Check for token in headers
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
         try {
             // Get token from header
@@ -23,6 +22,7 @@ const protect = async (req, res, next) => {
                     errors: ['User not found']
                 });
             }
+
 
             // Check if user is active
             if (!user.is_active) {
@@ -51,6 +51,8 @@ const protect = async (req, res, next) => {
             errors: ['Not authorized, no token']
         });
     }
+
+      if (req.method === 'OPTIONS') return next();
 };
 
 // Check if user is provider

@@ -10,18 +10,44 @@ const authRoutes = require('./routes/authRoutes');
 
 
 const app = express();
+// const adminRoutes = require('./routes/adminRoutes');
+// app.use('/api/admin', adminRoutes);
+
 const adminRoutes = require('./routes/adminRoutes');
 app.use('/api/admin', adminRoutes);
 
 const providerRoutes = require('./routes/providerRoutes');
 app.use('/api/provider', providerRoutes);
 
+const customerRoutes = require('./routes/customerRoutes');
+app.use('/api/customer', customerRoutes);
+
 // Security middleware
 app.use(helmet());
+
+// app.use(cors({
+//     origin: 'http://localhost:5173',
+//     credentials: true
+// }));
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true
+    origin: ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:5173'],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+
+// Add this before your routes
+// app.options('*', cors());
+
+// const corsOptions = {
+//     origin: ['http://localhost:3000', 'http://localhost:5173', 'http://127.0.0.1:5173'],
+//     credentials: true,
+//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+//     allowedHeaders: ['Content-Type', 'Authorization']
+// };
+
+// app.use(cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
